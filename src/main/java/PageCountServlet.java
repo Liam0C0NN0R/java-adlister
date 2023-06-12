@@ -3,19 +3,23 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "HelloWorldServlet", urlPatterns = "/hello")
-public class HelloWorldServlet extends HttpServlet {
+@WebServlet(name = "PageViewCounterServlet", urlPatterns = "/count")
+public class PageCountServlet extends HttpServlet {
+
+    private int count = 0;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        String name = request.getParameter("name");
-        if (name != null) {
-            out.println("<h1>Hello, " + name + "!</h1>");
+        String resetParam = request.getParameter("reset");
+        if (resetParam != null) {
+            count = 0;
         } else {
-            out.println("<h1>Hello, World!</h1>");
+            count++;
         }
+
+        out.println("<h1>Page views: " + count + "</h1>");
     }
 }
-
