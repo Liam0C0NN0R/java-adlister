@@ -1,4 +1,8 @@
+package models;
+
 import lombok.*;
+import models.Author;
+
 @Getter
 @Setter
 @NoArgsConstructor

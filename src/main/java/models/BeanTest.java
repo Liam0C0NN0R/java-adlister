@@ -1,8 +1,12 @@
+package models;
+
+import models.Album;
+import models.Author;
+
 import java.util.*;
 
 public class BeanTest {
     public static void main(String[] args) {
-        // Instantiate some albums
         // Instantiate some albums
         Album album1 = new Album(1, "Led Zeppelin", "Led Zeppelin IV", 1971, 37.0f, "Rock");
         Album album2 = new Album(2, "Metallica", "Master of Puppets", 1986, 6.0f, "Heavy Metal");
@@ -30,7 +34,7 @@ public class BeanTest {
 
         // Iterate over the albums and print out their details
         for (Album album : albums) {
-            System.out.println("Album: " + album.getName());
+            System.out.println("models.Album: " + album.getName());
             System.out.println("Artist: " + album.getArtist());
             System.out.println("Year: " + album.getReleaseDate());
             System.out.println("Sales: " + album.getSales() + " million");
@@ -40,8 +44,8 @@ public class BeanTest {
 
         // Iterate over the quotes and print out their content and author
         for (Quote quote : quotes) {
-            System.out.println("Quote: " + quote.getContent());
-            System.out.println("Author: " + quote.getAuthor().getName());
+            System.out.println("models.Quote: " + quote.getContent());
+            System.out.println("models.Author: " + quote.getAuthor().getName());
             System.out.println();
         }
     }
