@@ -1,3 +1,4 @@
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,15 +11,14 @@ import java.io.IOException;
 public class ViewProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        if (session.getAttribute("user") == null) {
-            // User is not logged in, redirect to login page
-            response.sendRedirect("/login.jsp");
+        // Check if user is logged in
+        if (request.getSession().getAttribute("user") != null) {
+            // Forward request to profile.jsp
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/profile.jsp");
+            dispatcher.forward(request, response);
         } else {
-            // User is logged in, forward to profile page
-            String username = (String) session.getAttribute("user");
-            request.setAttribute("username", username);
-            request.getRequestDispatcher("/profile.jsp").forward(request, response);
+            // Redirect to login page if user is not logged in
+            response.sendRedirect("/login");
         }
     }
 }

@@ -1,3 +1,4 @@
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,7 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         boolean validAttempt = username.equals("admin") && password.equals("password");
@@ -32,7 +33,8 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
         } else {
             // Redirect back to login page if credentials are incorrect
-            response.sendRedirect("/login.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
+            dispatcher.forward(request, response);
         }
     }
 }
