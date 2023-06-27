@@ -9,6 +9,12 @@
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
+        <c:if test="${not empty errorMessage and errorMessage.trim() != ''}">
+            <div class="alert alert-danger">${errorMessage}</div>
+        </c:if>
+        <c:if test="${empty errorMessage or errorMessage.trim() == ''}">
+            <div class="alert alert-success">No error message</div>
+        </c:if>
         <form action="/register" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
