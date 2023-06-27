@@ -1,5 +1,6 @@
 package adlister.dao;
 
+
 import adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
