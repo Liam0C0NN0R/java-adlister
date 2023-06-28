@@ -19,6 +19,7 @@
                             <li><a class="dropdown-item" href="/profile">Profile</a></li>
                             <li><a class="dropdown-item" href="/ads">Ad List</a></li>
                             <li><a class="dropdown-item" href="/ads/create">Create Ad</a></li>
+                            <li><a class="dropdown-item" href="/ads/search">Search Ad</a></li>
                         </ul>
                     </div>
 

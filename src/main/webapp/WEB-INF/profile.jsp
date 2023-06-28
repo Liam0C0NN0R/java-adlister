@@ -18,6 +18,17 @@
         <div>
             <h3>${ad.title}</h3>
             <p>${ad.description}</p>
+
+            <!-- display edit and delete buttons -->
+            <form action="/ads/edit" method="GET">
+                <input type="hidden" name="adId" value="${ad.id}" />
+                <input type="submit" value="Edit" />
+            </form>
+
+            <form action="/ads/delete" method="post">
+                <input type="hidden" name="adId" value="${ad.id}" />
+                <input type="submit" value="Delete" />
+            </form>
         </div>
     </c:forEach>
 </div>
