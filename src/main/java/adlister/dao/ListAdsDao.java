@@ -39,6 +39,24 @@ public class ListAdsDao implements Ads {
         return ad.getId();
     }
 
+    @Override
+    public List<Ad> searchAds(String query) {
+        if (ads == null) {
+            ads = generateAds();
+        }
+
+        List<Ad> matchingAds = new ArrayList<>();
+        for (Ad ad : ads) {
+            if (ad.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                    ad.getDescription().toLowerCase().contains(query.toLowerCase())) {
+                matchingAds.add(ad);
+            }
+        }
+
+        return matchingAds;
+    }
+
+
     private List<Ad> generateAds() {
         List<Ad> ads = new ArrayList<>();
         ads.add(new Ad(
