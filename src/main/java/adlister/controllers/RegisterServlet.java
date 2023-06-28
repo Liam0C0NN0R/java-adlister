@@ -27,10 +27,11 @@ public class RegisterServlet extends HttpServlet {
         boolean inputHasErrors = username.isEmpty()
                 || email.isEmpty()
                 || password.isEmpty()
-                || (! password.equals(passwordConfirmation));
+                || (! password.equals(passwordConfirmation))
+                || (DaoFactory.getUsersDao().findByUsername(username) != null);
 
         if (inputHasErrors) {
-            String errorMessage = "All fields are required, and passwords must match.";
+            String errorMessage = "All fields are required, passwords must match, and username must be unique.";
             request.setAttribute("errorMessage", errorMessage);
             request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
             return;
@@ -47,5 +48,6 @@ public class RegisterServlet extends HttpServlet {
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
     }
+
 
 }
