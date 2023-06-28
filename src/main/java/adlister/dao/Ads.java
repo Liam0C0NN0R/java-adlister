@@ -1,20 +1,16 @@
 package adlister.dao;
 
 import adlister.models.Ad;
-import adlister.models.User;
 
 import java.util.List;
 
 public interface Ads {
-    // get a list of all the ads
     List<Ad> all();
-
     Ad findById(long id);
-    // insert a new ad and return the new ad's id
     Long insert(Ad ad);
-
-
     List<Ad> searchAds(String query);
+    List<Ad> getAdsByUser(long userId); // New method to retrieve ads by user
 }
+
 
 
