@@ -1,0 +1,28 @@
+/* add-page.css */
+
+/* Dark mode styles */
+[data-bs-theme="dark"] {
+    /* Add your dark mode styles here */
+    background-color: #212121;
+    color: #fff;
+}
+
+/* Additional dark mode styles specific to the add-page */
+[data-bs-theme="dark"] h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Light mode styles */
+[data-bs-theme="light"] {
+    /* Add your light mode styles here */
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Additional light mode styles specific to the add-page */
+[data-bs-theme="light"] h1 {
+    font-size: 20px;
+    font-weight: normal;
+}
+
