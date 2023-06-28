@@ -13,6 +13,9 @@ public interface Ads {
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
 
+    void delete(long id);
+    void update(Ad ad);
+
 
     List<Ad> searchAds(String query);
 }

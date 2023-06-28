@@ -2,8 +2,8 @@ package adlister.dao;
 
 import adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
-
-
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +88,30 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error finding ad by ID.", e);
         }
         return null;
+    }
+    @Override
+    public void update(Ad ad) {
+        try {
+            String query = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setLong(3, ad.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating ad.", e);
+        }
+    }
+    @Override
+    public void delete(long id) {
+        try {
+            String query = "DELETE FROM ads WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting ad.", e);
+        }
     }
 
 }

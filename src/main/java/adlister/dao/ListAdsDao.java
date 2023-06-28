@@ -85,4 +85,26 @@ public class ListAdsDao implements Ads {
         ));
         return ads;
     }
+    @Override
+    public void delete(long id) {
+        ads.removeIf(ad -> ad.getId() == id);
+    }
+
+
+
+    @Override
+    public void update(Ad ad) {
+        for (Ad existingAd : ads) {
+            if (existingAd.getId() == ad.getId()) {
+                existingAd.setTitle(ad.getTitle());
+                existingAd.setDescription(ad.getDescription());
+                for (int i = 0; i < ads.size(); i++) {
+                    if (ads.get(i).getId() == ad.getId()) {
+                        ads.set(i, ad);
+                        return;
+                    }
+                }
+            }
+        }
+    }
 }
