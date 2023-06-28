@@ -56,6 +56,21 @@ public class ListAdsDao implements Ads {
         return matchingAds;
     }
 
+    @Override
+    public List<Ad> getAdsByUser(long userId) {
+        if (ads == null) {
+            ads = generateAds();
+        }
+
+        List<Ad> userAds = new ArrayList<>();
+        for (Ad ad : ads) {
+            if (ad.getUserId() == userId) {
+                userAds.add(ad);
+            }
+        }
+
+        return userAds;
+    }
 
     private List<Ad> generateAds() {
         List<Ad> ads = new ArrayList<>();
