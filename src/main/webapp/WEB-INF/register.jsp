@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <jsp:include page="partials/head.jsp">
@@ -11,9 +13,6 @@
         <h1>Please fill in your information.</h1>
         <c:if test="${not empty errorMessage and errorMessage.trim() != ''}">
             <div class="alert alert-danger">${errorMessage}</div>
-        </c:if>
-        <c:if test="${empty errorMessage or errorMessage.trim() == ''}">
-            <div class="alert alert-success">No error message</div>
         </c:if>
         <form action="/register" method="post">
             <div class="form-group">
