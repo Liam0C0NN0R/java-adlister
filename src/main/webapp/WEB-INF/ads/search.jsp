@@ -17,7 +17,7 @@
         <button type="submit">Search</button>
     </form>
 
-    <c:forEach var="ad" items="${ads}">
+    <c:forEach var="ad" items="${matchingAds}"> <!-- Update the items attribute to use matchingAds instead of ads -->
         <div class="ad-card">
             <h2><a href="${pageContext.request.contextPath}/ads/show?id=${ad.id}">${ad.title}</a></h2>
             <p>${ad.description}</p>

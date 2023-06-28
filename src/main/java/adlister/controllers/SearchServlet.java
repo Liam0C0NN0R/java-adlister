@@ -2,6 +2,7 @@ package adlister.controllers;
 
 import adlister.dao.DaoFactory;
 import adlister.models.Ad;
+import adlister.models.AdSearch; // Import the AdSearch class
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,4 +32,3 @@ public class SearchServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/ads/search.jsp").forward(request, response);
     }
 }
-
