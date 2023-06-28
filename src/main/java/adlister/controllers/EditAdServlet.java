@@ -29,7 +29,6 @@ public class EditAdServlet extends HttpServlet {
         } else {
             System.out.println("Ad not found with id: " + adId);
             // handle the case where the ad is not found
-            // for example, you can redirect to a 404 page or the ads list page
             response.sendRedirect("/ads");
             return;
         }

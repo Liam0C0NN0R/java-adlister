@@ -8,10 +8,6 @@
     <link rel="stylesheet" type="text/css" href="../../CSS/add-page.css" />
 </head>
 <body>
-<h1>Hello, world!</h1>
-
-<button id="toggleDarkModeBtn">Dark Mode</button>
-
 <script>
     (() => {
         'use strict';
@@ -21,30 +17,32 @@
 
         const getPreferredTheme = () => {
             const storedTheme = getStoredTheme();
-            if (storedTheme) {
-                return storedTheme;
-            }
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            if(storedTheme) return storedTheme;
+
+            const mediaQuery = '(prefers-color-scheme: dark)';
+            const isDarkMode = window.matchMedia && window.matchMedia(mediaQuery).matches;
+            return isDarkMode ? 'dark' : 'light';
         };
 
-        const setTheme = theme => {
-            if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.documentElement.setAttribute('data-bs-theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-bs-theme', theme);
-            }
+        const themeSwitchers = document.querySelectorAll('#loggedInDarkModeBtn, #loggedOutDarkModeBtn'); // Changed ID
+        const body = document.querySelector('body');
+
+        const switchTheme = theme => {
+            body.setAttribute('data-bs-theme', theme);
+            setStoredTheme(theme);
         };
 
-        const toggleDarkMode = () => {
-            const currentTheme = getStoredTheme();
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setStoredTheme(newTheme);
-            setTheme(newTheme);
-        };
+        window.addEventListener('load', () => {
+            const theme = getPreferredTheme();
+            switchTheme(theme);
+        });
 
-        document.getElementById('toggleDarkModeBtn').addEventListener('click', toggleDarkMode);
-
-        setTheme(getPreferredTheme());
+        themeSwitchers.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const newTheme = getStoredTheme() === 'dark' ? 'light' : 'dark';
+                switchTheme(newTheme);
+            });
+        });
     })();
 </script>
 </body>

@@ -12,6 +12,5 @@
 <h3>User Information</h3>
 <p>Username: ${user.username}</p>
 <p>Email: ${user.email}</p>
-<!-- Add more user details if needed -->
 </body>
 </html>

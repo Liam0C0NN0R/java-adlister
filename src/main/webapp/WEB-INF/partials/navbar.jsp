@@ -1,8 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="../../CSS/add-page.css">
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <a class="navbar-brand" href="/ads">Adlister</a>
         </div>
@@ -22,15 +22,17 @@
                             <li><a class="dropdown-item" href="/ads/search">Search Ad</a></li>
                         </ul>
                     </div>
+<%--                    <button id="loggedInDarkModeBtn">Dark Mode</button>--%>
 
                 </c:when>
                 <c:otherwise>
                     <!-- User is not logged in -->
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
+<%--                    <button id="loggedOutDarkModeBtn">Dark Mode</button>--%>
                 </c:otherwise>
             </c:choose>
         </ul>
-    </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+    </div>
+    </div>
 </nav>
