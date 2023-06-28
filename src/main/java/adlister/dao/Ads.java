@@ -8,6 +8,9 @@ public interface Ads {
     List<Ad> all();
     Ad findById(long id);
     Long insert(Ad ad);
+    void delete(long id);
+    void update(Ad ad);
+
     List<Ad> searchAds(String query);
     List<Ad> getAdsByUser(long userId); // New method to retrieve ads by user
 }
