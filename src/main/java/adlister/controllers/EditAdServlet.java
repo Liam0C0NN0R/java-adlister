@@ -16,16 +16,23 @@ public class EditAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // get the current user
         User currentUser = (User) request.getSession().getAttribute("user");
-        Ad ad = null;
-        System.out.println(ad);
-        request.setAttribute("ad", ad);
-        System.out.println(ad.getTitle());
-        System.out.println(ad.getDescription());
 
         // get the ad to edit
         String adIdString = request.getParameter("adId");
         Long adId = Long.parseLong(adIdString);  // convert string to Long
-        ad = DaoFactory.getAdsDao().findById(adId);
+        Ad ad = DaoFactory.getAdsDao().findById(adId);
+
+        System.out.println(ad);  // print the ad object
+        if (ad != null) {
+            System.out.println(ad.getTitle());
+            System.out.println(ad.getDescription());
+        } else {
+            System.out.println("Ad not found with id: " + adId);
+            // handle the case where the ad is not found
+            // for example, you can redirect to a 404 page or the ads list page
+            response.sendRedirect("/ads");
+            return;
+        }
 
         // check if the ad belongs to the current user
         if (ad.getUserId() != currentUser.getId()) {
@@ -36,6 +43,7 @@ public class EditAdServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
         }
     }
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // get the current user
