@@ -17,7 +17,11 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
-            <input type="submit" class="btn btn-block btn-primary">
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <a href="/ads" class="btn btn-secondary">Cancel</a>
+            </div>
+
         </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

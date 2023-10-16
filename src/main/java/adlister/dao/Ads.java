@@ -5,8 +5,15 @@ import adlister.models.Ad;
 import java.util.List;
 
 public interface Ads {
-    // get a list of all the ads
     List<Ad> all();
-    // insert a new ad and return the new ad's id
+    Ad findById(long id);
     Long insert(Ad ad);
+    void delete(long id);
+    void update(Ad ad);
+
+    List<Ad> searchAds(String query);
+    List<Ad> getAdsByUser(long userId); // New method to retrieve ads by user
 }
+
+
+
